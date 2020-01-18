@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Background : MonoBehaviour
+public class BackgroundBehaviour : MonoBehaviour
 {
     public GameObject player;
     public float offset;
