@@ -54,6 +54,7 @@ public class ScoreManager : MonoBehaviour
             highScores.scores = highScores.scores.GetRange(0, 5);
         } catch (ArgumentException e) {}
         SaveGameData();
+        UpdateHighScoreDisplay();
     }
 
     private void UpdateHighScoreDisplay()

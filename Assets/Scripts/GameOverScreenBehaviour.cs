@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.IO;
+using UnityEngine.UI;
 
 public class GameOverScreenBehaviour : MonoBehaviour
 {
     public GameObject player;
-    public ScoreBehaviour score;
     private bool gameOverScreenVisible;
     private bool highScoresScreenVisible;
     private float countdown = 1;
@@ -19,16 +15,16 @@ public class GameOverScreenBehaviour : MonoBehaviour
         highScoresScreenVisible = false;
         foreach (Button button in GetComponentsInChildren<Button>())
         {
-            if (button.name == "RetryButton")
+            if (button.name == "NewGameButton")
             {
-                button.onClick.AddListener(() => SceneManager.LoadScene("SampleScene"));
+                button.onClick.AddListener(() => GameObject.Find("FadeOutPanel").GetComponent<FadeOutBehaviour>().StartFade(() => SceneManager.LoadScene("GameScene")));
             } else if (button.name == "HighScoresButton")
             {
                 button.onClick.AddListener(() =>
                 {
                     highScoresScreenVisible = true;
                     gameOverScreenVisible = false;
-                    GameObject.Find("GameOverCanvas").GetComponent<Canvas>().enabled = false;
+                    GameObject.Find("MainMenuCanvas").GetComponent<Canvas>().enabled = false;
                     GameObject.Find("HighScoresCanvas").GetComponent<Canvas>().enabled = true;
                 });
             }
@@ -38,7 +34,7 @@ public class GameOverScreenBehaviour : MonoBehaviour
                 {
                     highScoresScreenVisible = false;
                     gameOverScreenVisible = true;
-                    GameObject.Find("GameOverCanvas").GetComponent<Canvas>().enabled = true;
+                    GameObject.Find("MainMenuCanvas").GetComponent<Canvas>().enabled = true;
                     GameObject.Find("HighScoresCanvas").GetComponent<Canvas>().enabled = false;
                 });
             }
@@ -58,7 +54,7 @@ public class GameOverScreenBehaviour : MonoBehaviour
             {
                 // Game over
                 gameOverScreenVisible = true;
-                GameObject.Find("GameOverCanvas").GetComponent<Canvas>().enabled = true;
+                GameObject.Find("MainMenuCanvas").GetComponent<Canvas>().enabled = true;
             }
         }
     }
