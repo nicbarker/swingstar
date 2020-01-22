@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public GameObject chainPrefab;
+    public List<AudioClip> shootSounds;
+    public List<AudioClip> impactSounds;
+
     private bool mouseClicked;
     private Vector3 clickPoint;
     private GameObject currentRope;
     private Vector2 ropeEndPoint;
     private bool exploded;
-    public GameObject chainPrefab;
     private float timer = 3;
     // Start is called before the first frame update
     void Start()
@@ -59,6 +62,9 @@ public class PlayerBehaviour : MonoBehaviour
                 hinge.anchor = new Vector2(0, totalRopeDistance);
                 FixedJoint2D fixedJoint = currentRope.GetComponent<FixedJoint2D>();
                 fixedJoint.connectedBody = this.GetComponent<Rigidbody2D>();
+                // Play rope shooting sound
+                GetComponents<AudioSource>()[0].clip = shootSounds[(int)Mathf.Round(Random.Range(0, shootSounds.Count))];
+                GetComponents<AudioSource>()[0].Play();
             }
         } else if (this.mouseClicked && !Input.GetMouseButton(0) && !exploded)
         {
@@ -95,6 +101,8 @@ public class PlayerBehaviour : MonoBehaviour
                 currentRope.GetComponent<HingeJoint2D>().enabled = true;
                 currentRope.GetComponent<FixedJoint2D>().enabled = true;
                 ropeEndPoint = new Vector2(0, 0);
+                GetComponents<AudioSource>()[1].clip = impactSounds[(int)Mathf.Round(Random.Range(0, impactSounds.Count))];
+                GetComponents<AudioSource>()[1].Play();
             }
         }
     }
