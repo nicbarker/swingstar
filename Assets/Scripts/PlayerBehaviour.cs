@@ -90,7 +90,7 @@ public class PlayerBehaviour : MonoBehaviour
                     -1
                 );
                 GameObject chainHead = transform.GetChild(0).gameObject;
-                chainHead.transform.position += currentRope.transform.forward;
+                chainHead.transform.position += (currentRope.transform.forward * 0.05f);
                 currentRope.transform.rotation = Quaternion.Euler(
                     0, 0, 90 + Mathf.Atan2(transform.position.y - clickPoint.y, transform.position.x - clickPoint.x) * Mathf.Rad2Deg
                 );
@@ -102,7 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
                 currentRope.GetComponent<FixedJoint2D>().enabled = true;
                 ropeEndPoint = new Vector2(0, 0);
                 GetComponents<AudioSource>()[1].clip = impactSounds[(int)Mathf.Round(Random.Range(0, impactSounds.Count))];
-                GetComponents<AudioSource>()[1].Play();
+                GetComponents<AudioSource>()[1].PlayDelayed(0.02f);
             }
         }
     }
