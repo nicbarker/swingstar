@@ -11,6 +11,8 @@ public class ScoreBehaviour : MonoBehaviour
     public GameObject scoreText;
     public GameObject multiplierText;
     public ScoreManager scoreManager;
+    public AudioClip startTimerHigh;
+    public AudioClip startTimerLow;
     private bool gameOver;
     private int previousPosition;
     public int score;
@@ -30,10 +32,17 @@ public class ScoreBehaviour : MonoBehaviour
             int floorTime = (int)countdown;
             if (floorTime > 0)
             {
+                if (centerText.GetComponent<Text>().text != floorTime.ToString())
+                {
+                    GetComponents<AudioSource>()[0].clip = startTimerLow;
+                    GetComponents<AudioSource>()[0].Play();
+                }
                 centerText.GetComponent<Text>().text = floorTime.ToString();
-            } else
+            } else if (centerText.GetComponent<Text>().text != "GO!")
             {
                 centerText.GetComponent<Text>().text = "GO!";
+                GetComponents<AudioSource>()[1].clip = startTimerHigh;
+                GetComponents<AudioSource>()[1].Play();
             }
         } else
         {

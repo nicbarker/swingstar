@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameOverScreenBehaviour : MonoBehaviour
 {
     public GameObject player;
+    public string nextScene;
     private bool gameOverScreenVisible;
     private bool highScoresScreenVisible;
     private float countdown = 1;
@@ -17,7 +18,7 @@ public class GameOverScreenBehaviour : MonoBehaviour
         {
             if (button.name == "NewGameButton")
             {
-                button.onClick.AddListener(() => GameObject.Find("FadeOutPanel").GetComponent<FadeOutBehaviour>().StartFade(() => SceneManager.LoadScene("GameScene")));
+                button.onClick.AddListener(() => GameObject.Find("FadeOutPanel").GetComponent<FadeOutBehaviour>().StartFade(() => SceneManager.LoadScene(nextScene)));
             } else if (button.name == "HighScoresButton")
             {
                 button.onClick.AddListener(() =>
