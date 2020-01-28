@@ -62,6 +62,7 @@ public class ScoreBehaviour : MonoBehaviour
 
             int multiplier = Mathf.Max((int)(player.GetComponent<Rigidbody2D>().velocity.magnitude / 5), 1);
             multiplierText.GetComponent<Text>().text = multiplier + "X";
+            GameObject.Find("GlowEffect").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Min(5, multiplier) * 0.2f);
             if (player.transform.position.x > previousPosition)
             {
                 score += (int)(player.transform.position.x - previousPosition) * multiplier;
