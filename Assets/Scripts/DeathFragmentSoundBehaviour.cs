@@ -5,11 +5,13 @@ using UnityEngine;
 public class DeathFragmentSoundBehaviour : MonoBehaviour
 {
     private AudioClip deathSound;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        deathSound = Resources.Load<AudioClip>("Audio/Death/glass_small");
-        var audioSource = gameObject.AddComponent<AudioSource>();
+        var random = (int)Random.Range(1, 4);
+        deathSound = Resources.Load<AudioClip>("Audio/Death/GlassSmash" + random.ToString());
+        audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = deathSound;
     }
 
@@ -23,7 +25,6 @@ public class DeathFragmentSoundBehaviour : MonoBehaviour
     {
         if (collision.relativeVelocity.magnitude > 5)
         {
-            var audioSource = GetComponent<AudioSource>();
             audioSource.pitch = 1 + Random.Range(-0.1f, 0.1f);
             audioSource.Play();
         }

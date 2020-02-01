@@ -52,7 +52,9 @@ public class ScoreManager : MonoBehaviour
         try
         {
             highScores.scores = highScores.scores.GetRange(0, 5);
-        } catch (ArgumentException e) {}
+        } catch (ArgumentException e) {
+            Debug.Log(e.ToString());
+        }
         SaveGameData();
         UpdateHighScoreDisplay();
     }

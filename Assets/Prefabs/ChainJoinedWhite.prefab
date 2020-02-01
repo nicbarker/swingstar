@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3816936999695432542}
   - component: {fileID: 2689315489745143670}
   m_Layer: 9
-  m_Name: CHAIN-JOINED 1
+  m_Name: ChainJoinedWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9195444423134285198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.775968, y: 0.08076389, z: -1}
+  m_LocalPosition: {x: -3.775968, y: 0.08076389, z: -0.5}
   m_LocalScale: {x: 0.29, y: 0.29, z: 0.29}
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,7 +120,7 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 1.31, z: 0, w: 2.52}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 2.49, y: 5.29}
     newSize: {x: 2.49, y: 5.29}

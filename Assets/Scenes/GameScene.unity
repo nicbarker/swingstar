@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -286,7 +287,7 @@ GameObject:
   - component: {fileID: 37191502}
   - component: {fileID: 37191501}
   - component: {fileID: 37191506}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,6 +357,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -588,7 +590,7 @@ GameObject:
   - component: {fileID: 142424896}
   - component: {fileID: 142424895}
   - component: {fileID: 142424897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,6 +611,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -787,7 +790,7 @@ GameObject:
   - component: {fileID: 163352487}
   - component: {fileID: 163352488}
   - component: {fileID: 163352489}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,6 +832,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -872,7 +876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163352481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.65, y: -2.37, z: -10}
+  m_LocalPosition: {x: -11.98, y: -2.01, z: -10}
   m_LocalScale: {x: 0.23, y: 0.23, z: 0.23}
   m_Children:
   - {fileID: 780606221}
@@ -940,17 +944,7 @@ MonoBehaviour:
   chainPrefab: {fileID: 9195444423134285198, guid: 9eab6b5c5aa954924ac498628516bec0,
     type: 3}
   shootSounds:
-  - {fileID: 8300000, guid: 300626b4b87b045539e428d05d42eaf3, type: 3}
-  - {fileID: 8300000, guid: 2c437ff09f1d34cbda2eedf1e9010d9d, type: 3}
-  - {fileID: 8300000, guid: 6ee65376fb68448878a22c78f249d472, type: 3}
-  - {fileID: 8300000, guid: 9dd1f666471254d07a2eeb76e331c177, type: 3}
-  - {fileID: 8300000, guid: b149b80ec8c7746e4b4e4ca807fa6c76, type: 3}
-  - {fileID: 8300000, guid: 205c344087d474a69b3837d418819540, type: 3}
-  - {fileID: 8300000, guid: 92b3c0ceefb4f4055848420c5581c0b6, type: 3}
-  impactSounds:
-  - {fileID: 8300000, guid: 06c2c1ddff9d74395a0c9fb801af9be5, type: 3}
-  - {fileID: 8300000, guid: 77e4475d56a3a44da856d5406ed72723, type: 3}
-  - {fileID: 8300000, guid: 4e75eedbd731a4164ae674f43c282c5b, type: 3}
+  - {fileID: 8300000, guid: c9c2ce56e9d7545ab94bede3ba549b9c, type: 3}
   timer: 3
   maxRopeDistance: 50
   enableMouseEvents: 1
@@ -1000,7 +994,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.523
+  m_Volume: 0.5
   m_Pitch: 0.94
   Loop: 0
   Mute: 0
@@ -1096,7 +1090,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1193,7 +1187,7 @@ GameObject:
   - component: {fileID: 226469509}
   - component: {fileID: 226469508}
   - component: {fileID: 226469507}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,6 +1257,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1858,7 +1853,7 @@ GameObject:
   - component: {fileID: 412961807}
   - component: {fileID: 412961806}
   - component: {fileID: 412961805}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1928,6 +1923,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2193,7 +2189,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 0
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -2226,7 +2222,7 @@ GameObject:
   - component: {fileID: 520071163}
   - component: {fileID: 520071162}
   - component: {fileID: 520071161}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bottom (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2362,6 +2358,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2424,7 +2421,7 @@ GameObject:
   - component: {fileID: 525049768}
   - component: {fileID: 525049767}
   - component: {fileID: 525049766}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2494,6 +2491,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2716,7 +2714,7 @@ GameObject:
   - component: {fileID: 543627197}
   - component: {fileID: 543627196}
   - component: {fileID: 543627195}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2786,6 +2784,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2879,7 +2878,7 @@ GameObject:
   - component: {fileID: 572593187}
   - component: {fileID: 572593186}
   - component: {fileID: 572593185}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2949,6 +2948,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3411,7 +3411,7 @@ GameObject:
   - component: {fileID: 624797821}
   - component: {fileID: 624797820}
   - component: {fileID: 624797819}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3481,6 +3481,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3540,7 +3541,7 @@ GameObject:
   - component: {fileID: 669969063}
   - component: {fileID: 669969062}
   - component: {fileID: 669969061}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3610,6 +3611,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3742,7 +3744,7 @@ GameObject:
   - component: {fileID: 695074219}
   - component: {fileID: 695074222}
   - component: {fileID: 695074223}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3862,6 +3864,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4166,7 +4169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 748745471}
   - component: {fileID: 748745472}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: GlowEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4201,6 +4204,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4350,7 +4354,7 @@ GameObject:
   - component: {fileID: 780606217}
   - component: {fileID: 780606222}
   - component: {fileID: 780606223}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4420,6 +4424,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4476,7 +4481,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 09f9909bd891244d19f0fd73cb82b991, type: 3}
+  m_audioClip: {fileID: 8300000, guid: dcfcc07aa2ce142a1a38958e74454cfb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5074,7 +5079,6 @@ GameObject:
   - component: {fileID: 849891668}
   - component: {fileID: 849891667}
   - component: {fileID: 849891666}
-  - component: {fileID: 849891665}
   - component: {fileID: 849891669}
   - component: {fileID: 849891670}
   - component: {fileID: 849891671}
@@ -5085,23 +5089,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &849891665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849891664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &849891666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6027,10 +6014,10 @@ RectTransform:
   m_Father: {fileID: 849891668}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -183, y: 329}
-  m_SizeDelta: {x: 272.80005, y: 126.83}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -183, y: -211}
+  m_SizeDelta: {x: 272.80005, y: 126.83002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066079367
 MonoBehaviour:
@@ -6720,7 +6707,7 @@ GameObject:
   - component: {fileID: 1524417617}
   - component: {fileID: 1524417616}
   - component: {fileID: 1524417621}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6790,6 +6777,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6960,7 +6948,7 @@ GameObject:
   - component: {fileID: 1554618398}
   - component: {fileID: 1554618397}
   - component: {fileID: 1554618396}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7030,6 +7018,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7089,7 +7078,7 @@ GameObject:
   - component: {fileID: 1555699502}
   - component: {fileID: 1555699501}
   - component: {fileID: 1555699500}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7159,6 +7148,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7220,7 +7210,7 @@ GameObject:
   - component: {fileID: 1651093020}
   - component: {fileID: 1651093025}
   - component: {fileID: 1651093026}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7290,6 +7280,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7346,7 +7337,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 39987836a47e445d8a6506988e315dcf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 842403c5b39db467986e5e931baed1e8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7571,7 +7562,7 @@ GameObject:
   - component: {fileID: 1799003351}
   - component: {fileID: 1799003350}
   - component: {fileID: 1799003355}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: CHARACTER1 piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7641,6 +7632,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7789,7 +7781,7 @@ GameObject:
   - component: {fileID: 1909181712}
   - component: {fileID: 1909181711}
   - component: {fileID: 1909181710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: top (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7948,6 +7940,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8061,7 +8054,7 @@ GameObject:
   - component: {fileID: 1959216666}
   - component: {fileID: 1959216665}
   - component: {fileID: 1959216664}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: background (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8096,6 +8089,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8379,7 +8373,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 2560, y: 1440}
+  m_ReferenceResolution: {x: 3200, y: 1800}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -8629,7 +8623,7 @@ GameObject:
   - component: {fileID: 2135541426}
   - component: {fileID: 2135541428}
   - component: {fileID: 2135541429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8650,6 +8644,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8846,10 +8841,10 @@ RectTransform:
   m_Father: {fileID: 849891668}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -530.3789, y: 450.63}
-  m_SizeDelta: {x: 967.57007, y: 189.83}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -530.3789, y: -89.37012}
+  m_SizeDelta: {x: 967.57007, y: 189.83002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2144149728
 MonoBehaviour:

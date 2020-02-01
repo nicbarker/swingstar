@@ -9,9 +9,15 @@ public class GameOverScreenBehaviour : MonoBehaviour
     private bool gameOverScreenVisible;
     private bool highScoresScreenVisible;
     private float countdown = 1;
+    private Canvas mainMenuCanvas;
     // Start is called before the first frame update
     void Start()
     {
+        var mainMenu = GameObject.Find("MainMenuCanvas");
+        if (mainMenu != null) {
+            mainMenuCanvas = mainMenu.GetComponent<Canvas>();
+        }
+
         gameOverScreenVisible = false;
         highScoresScreenVisible = false;
         foreach (Button button in GetComponentsInChildren<Button>())
@@ -25,7 +31,7 @@ public class GameOverScreenBehaviour : MonoBehaviour
                 {
                     highScoresScreenVisible = true;
                     gameOverScreenVisible = false;
-                    GameObject.Find("MainMenuCanvas").GetComponent<Canvas>().enabled = false;
+                    mainMenuCanvas.GetComponent<Canvas>().enabled = false;
                     GameObject.Find("HighScoresCanvas").GetComponent<Canvas>().enabled = true;
                 });
             }
@@ -35,7 +41,7 @@ public class GameOverScreenBehaviour : MonoBehaviour
                 {
                     highScoresScreenVisible = false;
                     gameOverScreenVisible = true;
-                    GameObject.Find("MainMenuCanvas").GetComponent<Canvas>().enabled = true;
+                    mainMenuCanvas.GetComponent<Canvas>().enabled = true;
                     GameObject.Find("HighScoresCanvas").GetComponent<Canvas>().enabled = false;
                 });
             }
@@ -55,7 +61,7 @@ public class GameOverScreenBehaviour : MonoBehaviour
             {
                 // Game over
                 gameOverScreenVisible = true;
-                GameObject.Find("MainMenuCanvas").GetComponent<Canvas>().enabled = true;
+                mainMenuCanvas.enabled = true;
             }
         }
     }

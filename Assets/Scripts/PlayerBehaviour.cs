@@ -6,7 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public GameObject chainPrefab;
     public List<AudioClip> shootSounds;
-    public List<AudioClip> impactSounds;
+    private int currentSoundSource = 0;
 
     private bool tutorialVisible;
     private float tutorialTimer = 0.8f;
@@ -24,19 +24,24 @@ public class PlayerBehaviour : MonoBehaviour
     public float maxRopeDistance = 30;
     public bool enableMouseEvents = true;
     private Vector3 initialPosition;
+
+    private Rigidbody2D playerRigidBody;
     // Start is called before the first frame update
     void Start()
     {
         initialPosition = transform.position;
         initialTimer = timer;
+        playerRigidBody = GetComponent<Rigidbody2D>();
+        Application.targetFrameRate = 60;
+        QualitySettings.maxQueuedFrames = 1;
     }
 
     public void ResetPlayerPosition()
     {
         transform.position = initialPosition;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        GetComponent<Rigidbody2D>().angularVelocity = 0;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        playerRigidBody.velocity = new Vector2(0, 0);
+        playerRigidBody.angularVelocity = 0;
+        playerRigidBody.bodyType = RigidbodyType2D.Static;
         timer = initialTimer;
         ReleaseChain();
         atInitialPosition = true;
@@ -58,7 +63,7 @@ public class PlayerBehaviour : MonoBehaviour
                 new Vector3(
                     transform.position.x,
                     transform.position.y,
-                    -1
+                    chainPrefab.transform.position.z
                 ),
                 Quaternion.Euler(
                     0, 0, 90 + Mathf.Atan2(playerPosition.y - clickPoint.y, playerPosition.x - clickPoint.x) * Mathf.Rad2Deg
@@ -71,10 +76,11 @@ public class PlayerBehaviour : MonoBehaviour
             hinge.connectedBody = results[1].rigidbody;
             hinge.anchor = new Vector2(0, totalRopeDistance);
             FixedJoint2D fixedJoint = currentRope.GetComponent<FixedJoint2D>();
-            fixedJoint.connectedBody = this.GetComponent<Rigidbody2D>();
+            fixedJoint.connectedBody = this.playerRigidBody;
             // Play rope shooting sound
-            GetComponents<AudioSource>()[0].clip = shootSounds[(int)Mathf.Round(Random.Range(0, shootSounds.Count))];
-            GetComponents<AudioSource>()[0].Play();
+            GetComponents<AudioSource>()[currentSoundSource].clip = shootSounds[0];
+            GetComponents<AudioSource>()[currentSoundSource].Play();
+            currentSoundSource = currentSoundSource == 0 ? 1 : 0;
         }
     }
 
@@ -86,12 +92,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Destroy(currentRope);
         }
-        this.GetComponent<Rigidbody2D>().AddForce(this.GetComponent<Rigidbody2D>().velocity * 55);
-        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 70));
+        this.playerRigidBody.AddForce(this.playerRigidBody.velocity * 55);
+        this.playerRigidBody.AddForce(new Vector2(0, 70));
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         if (timer > 0)
         {
@@ -99,8 +104,8 @@ public class PlayerBehaviour : MonoBehaviour
             return;
         } else if (atInitialPosition)
         {
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(1500, 2000));
+            playerRigidBody.bodyType = RigidbodyType2D.Dynamic;
+            playerRigidBody.AddForce(new Vector2(1500, 2000));
             atInitialPosition = false;
         }
 
@@ -115,9 +120,9 @@ public class PlayerBehaviour : MonoBehaviour
                 GameObject.Find("TutorialCanvas").GetComponent<Canvas>().enabled = true;
                 StaticData.showTutorial = false;
                 tutorialVisible = true;
-                tutorialVelocity = GetComponent<Rigidbody2D>().velocity;
-                tutorialAngularVelocity = GetComponent<Rigidbody2D>().angularVelocity;
-                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                tutorialVelocity = playerRigidBody.velocity;
+                tutorialAngularVelocity = playerRigidBody.angularVelocity;
+                playerRigidBody.bodyType = RigidbodyType2D.Static;
             }
         }
 
@@ -127,9 +132,9 @@ public class PlayerBehaviour : MonoBehaviour
             StaticData.showTutorial = false;
             if (tutorialVisible)
             {
-                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                GetComponent<Rigidbody2D>().velocity = tutorialVelocity;
-                GetComponent<Rigidbody2D>().angularVelocity = tutorialAngularVelocity;
+                playerRigidBody.bodyType = RigidbodyType2D.Dynamic;
+                playerRigidBody.velocity = tutorialVelocity;
+                playerRigidBody.angularVelocity = tutorialAngularVelocity;
                 GameObject.Find("TutorialCanvas").GetComponent<Canvas>().enabled = false;
             }
             ShootTowardsPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -144,11 +149,11 @@ public class PlayerBehaviour : MonoBehaviour
             float totalRopeDistance = Vector2.Distance(ropeEndPoint, transform.position) * (1 / currentRope.transform.localScale.x);
             if (ropeEndPoint != new Vector2(0, 0) && sprite.size.y < totalRopeDistance)
             {
-                sprite.size = new Vector2(2.49f, Mathf.Min(sprite.size.y + 6, totalRopeDistance));
+                sprite.size = new Vector2(2.49f, Mathf.Min(sprite.size.y + 10, totalRopeDistance));
                 currentRope.transform.position = new Vector3(
                     transform.position.x,
                     transform.position.y,
-                    -1
+                    currentRope.transform.position.z
                 );
                 GameObject chainHead = transform.GetChild(0).gameObject;
                 chainHead.transform.position += (currentRope.transform.forward * 0.05f);
@@ -159,11 +164,10 @@ public class PlayerBehaviour : MonoBehaviour
 
             if (ropeEndPoint != new Vector2(0, 0) && sprite.size.y >= totalRopeDistance)
             {
+                sprite.size = new Vector2(2.49f, sprite.size.y + 0.5f);
                 currentRope.GetComponent<HingeJoint2D>().enabled = true;
                 currentRope.GetComponent<FixedJoint2D>().enabled = true;
                 ropeEndPoint = new Vector2(0, 0);
-                GetComponents<AudioSource>()[1].clip = impactSounds[(int)Mathf.Round(Random.Range(0, impactSounds.Count))];
-                GetComponents<AudioSource>()[1].PlayDelayed(0.02f);
             } else if (ropeEndPoint != new Vector2(0, 0) && sprite.size.y >= maxRopeDistance)
             {
                 ReleaseChain();

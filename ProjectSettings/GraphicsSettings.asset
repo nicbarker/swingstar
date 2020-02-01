@@ -3,7 +3,7 @@
 --- !u!30 &1
 GraphicsSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
   m_Deferred:
     m_Mode: 1
     m_Shader: {fileID: 69, guid: 0000000000000000f000000000000000, type: 0}
@@ -54,7 +54,7 @@ GraphicsSettings:
       realtimeGICPUUsage: 25
       useReflectionProbeBoxProjection: 1
       useReflectionProbeBlending: 1
-      useHDR: 1
+      useHDR: 0
       useDetailNormalMap: 1
       useCascadedShadowMaps: 1
       prefer32BitShadowMaps: 0
@@ -71,7 +71,7 @@ GraphicsSettings:
       realtimeGICPUUsage: 50
       useReflectionProbeBoxProjection: 1
       useReflectionProbeBlending: 1
-      useHDR: 1
+      useHDR: 0
       useDetailNormalMap: 1
       useCascadedShadowMaps: 1
       prefer32BitShadowMaps: 0
@@ -88,7 +88,7 @@ GraphicsSettings:
       realtimeGICPUUsage: 25
       useReflectionProbeBoxProjection: 1
       useReflectionProbeBlending: 1
-      useHDR: 1
+      useHDR: 0
       useDetailNormalMap: 1
       useCascadedShadowMaps: 1
       prefer32BitShadowMaps: 0
@@ -111,3 +111,4 @@ GraphicsSettings:
   m_LightsUseLinearIntensity: 0
   m_LightsUseColorTemperature: 0
   m_LogWhenShaderIsCompiled: 0
+  m_AllowEnlightenSupportForUpgradedProject: 1

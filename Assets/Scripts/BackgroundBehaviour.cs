@@ -7,10 +7,11 @@ public class BackgroundBehaviour : MonoBehaviour
     public GameObject player;
     public float offset;
     private float localOffset;
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -18,11 +19,10 @@ public class BackgroundBehaviour : MonoBehaviour
     {
         if (player == null) return;
 
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
 
-        if (player.transform.position.x - (player.transform.position.x / 4) - sprite.bounds.size.x > offset + localOffset)
+        if (player.transform.position.x - (player.transform.position.x / 4) - spriteRenderer.bounds.size.x > offset + localOffset)
         {
-            localOffset += sprite.bounds.size.x * 2;
+            localOffset += spriteRenderer.bounds.size.x * 2;
         }
         transform.position = new Vector3(Mathf.Max((player.transform.position.x / 4) + offset + localOffset, 1.76f), transform.position.y, transform.position.z);
     }

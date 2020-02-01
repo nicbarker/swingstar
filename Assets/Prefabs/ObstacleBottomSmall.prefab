@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5708622735809243797}
   - component: {fileID: 5708622735809243818}
   - component: {fileID: 5708622735809243819}
-  m_Layer: 0
-  m_Name: OBS 02
+  m_Layer: 10
+  m_Name: ObstacleBottomSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

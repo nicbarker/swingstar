@@ -8,11 +8,13 @@ public class FadeOutBehaviour : MonoBehaviour
     private bool startedFade;
     private float countDown = 1;
     private Action onComplete;
+    private Image fadeImage;
     // Start is called before the first frame update
     void Start()
     {
+        fadeImage = GetComponent<Image>();
         var newValue = initiallyFaded ? 1 : 0;
-        GetComponent<Image>().color = new Color(0, 0, 0, newValue);
+        fadeImage.color = new Color(0, 0, 0, newValue);
         if (initiallyFaded)
         {
             startedFade = true;
@@ -28,7 +30,7 @@ public class FadeOutBehaviour : MonoBehaviour
             {
                 countDown -= Time.deltaTime * 2;
                 var newValue = initiallyFaded ? countDown : 1 - countDown;
-                GetComponent<Image>().color = new Color(0, 0, 0, newValue);
+                fadeImage.color = new Color(0, 0, 0, newValue);
             } else
             {
                 initiallyFaded = !initiallyFaded;
