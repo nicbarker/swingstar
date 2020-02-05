@@ -12,6 +12,8 @@ Swingstar is a simple, fast paced 2d arcade game. The objective of the game is t
 ### Build
 Swingstar is built in the [Unity](https://unity.com/) game engine, using C# for the scripting. The game is split across 4 scenes - the intro, the main menu, the tutorial screen and the main game. I didn't see any point adding functionality to return to the main menu after you've started the game, as everything in the main menu is still accessible from the "Game Over" screen.
 
+The crystal smashing mechanic when you hit something is implemented with the awesome [Unity-2D-Destruction](https://github.com/mjholtzem/Unity-2D-Destruction) Unity Package.
+
 ### Releases
 - [WebGL](games.nicbarker.org/swingstar)
 - [iOS](https://apps.apple.com/us/app/swingstar/id1497443665)
