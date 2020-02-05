@@ -18,3 +18,5 @@ Swingstar is built in the [Unity](https://unity.com/) game engine, using C# for 
 - [OSX](https://apps.apple.com/us/app/swingstar/id1497096235)
 - [Windows](https://memoretti-assets.nyc3.cdn.digitaloceanspaces.com/games/swingstar/Windows/Swingstar.zip)
 - Android (Currently waiting for review)
+
+Swingstar uses the GNU AGPL v3 license. Long story short, do whatever you want with it, but whatever you create also needs to be GNU AGPL3, and you need to give credit back to this original repo. Have fun 🙂
