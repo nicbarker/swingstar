@@ -19,6 +19,6 @@ The crystal smashing mechanic when you hit something is implemented with the awe
 - [iOS](https://apps.apple.com/us/app/swingstar/id1497443665)
 - [OSX](https://apps.apple.com/us/app/swingstar/id1497096235)
 - [Windows](https://memoretti-assets.nyc3.cdn.digitaloceanspaces.com/games/swingstar/Windows/Swingstar.zip)
-- Android (Currently waiting for review)
+- [Android](https://play.google.com/store/apps/details?id=com.delphinium.swingstar)
 
 Swingstar uses the GNU AGPL v3 license. Long story short, do whatever you want with it, but whatever you create also needs to be GNU AGPL3, and you need to give credit back to this original repo. Have fun 🙂
