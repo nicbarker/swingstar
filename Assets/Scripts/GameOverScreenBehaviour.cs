@@ -2,14 +2,27 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+enum MenuPanel {
+    MainMenu,
+    HighScores,
+    Credits
+}
 public class GameOverScreenBehaviour : MonoBehaviour
 {
     public GameObject player;
     public string nextScene;
-    private bool gameOverScreenVisible;
-    private bool highScoresScreenVisible;
+    private MenuPanel? visiblePanel;
     private float countdown = 1;
     private Canvas mainMenuCanvas;
+    void showPanel(MenuPanel panel) {
+        visiblePanel = panel;
+        mainMenuCanvas.GetComponent<Canvas>().enabled = panel == MenuPanel.MainMenu;
+        GameObject.Find("HighScoresCanvas").GetComponent<Canvas>().enabled = panel == MenuPanel.HighScores;
+        var creditsCanvas = GameObject.Find("CreditsCanvas");
+        if (creditsCanvas) {
+            creditsCanvas.GetComponent<Canvas>().enabled = panel == MenuPanel.Credits;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -18,32 +31,13 @@ public class GameOverScreenBehaviour : MonoBehaviour
             mainMenuCanvas = mainMenu.GetComponent<Canvas>();
         }
 
-        gameOverScreenVisible = false;
-        highScoresScreenVisible = false;
         foreach (Button button in GetComponentsInChildren<Button>())
         {
-            if (button.name == "NewGameButton")
-            {
-                button.onClick.AddListener(() => GameObject.Find("FadeOutPanel").GetComponent<FadeOutBehaviour>().StartFade(() => SceneManager.LoadScene(nextScene)));
-            } else if (button.name == "HighScoresButton")
-            {
-                button.onClick.AddListener(() =>
-                {
-                    highScoresScreenVisible = true;
-                    gameOverScreenVisible = false;
-                    mainMenuCanvas.GetComponent<Canvas>().enabled = false;
-                    GameObject.Find("HighScoresCanvas").GetComponent<Canvas>().enabled = true;
-                });
-            }
-            else if (button.name == "HighScoresBackButton")
-            {
-                button.onClick.AddListener(() =>
-                {
-                    highScoresScreenVisible = false;
-                    gameOverScreenVisible = true;
-                    mainMenuCanvas.GetComponent<Canvas>().enabled = true;
-                    GameObject.Find("HighScoresCanvas").GetComponent<Canvas>().enabled = false;
-                });
+            switch (button.name) {
+                case "NewGameButton": button.onClick.AddListener(() => GameObject.Find("FadeOutPanel").GetComponent<FadeOutBehaviour>().StartFade(() => SceneManager.LoadScene(nextScene))); break;
+                case "HighScoresButton": button.onClick.AddListener(() => { showPanel(MenuPanel.HighScores); }); break;
+                case "CreditsButton": button.onClick.AddListener(() => { showPanel(MenuPanel.Credits); }); break;
+                case "BackButton": button.onClick.AddListener(() => { showPanel(MenuPanel.MainMenu); }); break;
             }
         }
     }
@@ -57,11 +51,9 @@ public class GameOverScreenBehaviour : MonoBehaviour
             {
                 countdown -= Time.deltaTime;
             }
-            else if (!highScoresScreenVisible && !gameOverScreenVisible)
+            else if (visiblePanel == null)
             {
-                // Game over
-                gameOverScreenVisible = true;
-                mainMenuCanvas.enabled = true;
+                showPanel(MenuPanel.MainMenu);
             }
         }
     }

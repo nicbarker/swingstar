@@ -12,6 +12,7 @@ public class PlayerBehaviour : MonoBehaviour
     private float tutorialTimer = 0.8f;
     private Vector2 tutorialVelocity;
     private float tutorialAngularVelocity;
+    public bool gameStarted = false;
 
     private bool atInitialPosition = true;
     private bool mouseClicked;
@@ -91,16 +92,16 @@ public class PlayerBehaviour : MonoBehaviour
         if (currentRope)
         {
             Destroy(currentRope);
+            this.playerRigidBody.AddForce(this.playerRigidBody.velocity * 55);
+            this.playerRigidBody.AddForce(new Vector2(0, 70));
         }
-        this.playerRigidBody.AddForce(this.playerRigidBody.velocity * 55);
-        this.playerRigidBody.AddForce(new Vector2(0, 70));
     }
 
-    void Update()
+    void LateUpdate()
     {
-        if (timer > 0)
+        if (!gameStarted)
         {
-            timer -= Time.deltaTime;
+            this.mouseClicked = Input.GetMouseButton(0);
             return;
         } else if (atInitialPosition)
         {

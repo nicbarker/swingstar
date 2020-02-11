@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerTutorialBehaviour : MonoBehaviour
 {
     private bool swinging;
-    private List<float> baseTimers = new List<float>() { 1.8f, 2.2f, 2.7f, 3.05f, 3.6f, 4.1f, 4.8f };
+    private List<float> baseTimers = new List<float>() { 0.8f, 1.2f, 1.7f, 2.05f, 2.6f, 3.1f, 3.8f };
     private List<float> timers;
     private float resetTimer = 6;
     private float currentTime;

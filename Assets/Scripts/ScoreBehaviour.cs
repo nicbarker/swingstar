@@ -15,6 +15,7 @@ public class ScoreBehaviour : MonoBehaviour
     public AudioClip startTimerLow;
     private bool gameOver;
     private int previousPosition;
+    private bool mouseClicked = false;
     public int score;
     private float countdown = 4;
     private SpriteRenderer glowEffectSpriteRenderer;
@@ -40,11 +41,20 @@ public class ScoreBehaviour : MonoBehaviour
                     GetComponents<AudioSource>()[0].Play();
                 }
                 centerText.GetComponent<Text>().text = floorTime.ToString();
+                // Clicking during the initial countdown will decrease the timer by 1 second
+                if (!this.mouseClicked && Input.GetMouseButton(0))
+                {
+                    this.mouseClicked = true;
+                    countdown = 1f;
+                } else if (this.mouseClicked && !Input.GetMouseButton(0)) {
+                    this.mouseClicked = false;
+                }
             } else if (centerText.GetComponent<Text>().text != "GO!")
             {
                 centerText.GetComponent<Text>().text = "GO!";
                 GetComponents<AudioSource>()[1].clip = startTimerHigh;
                 GetComponents<AudioSource>()[1].Play();
+                player.GetComponent<PlayerBehaviour>().gameStarted = true;
             }
         } else
         {

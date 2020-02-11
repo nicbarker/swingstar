@@ -15,7 +15,6 @@ public class CaptureScreenshotScript : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log(Application.persistentDataPath);
             ScreenCapture.CaptureScreenshot("Screenshot1" + Random.Range(1, 1000).ToString() + ".png");
         }
     }
